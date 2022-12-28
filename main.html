@@ -1,91 +1,14 @@
-<!-- <!DOCTYPE html>
-
-<html>
-
-<head>
-	<link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-	 the entire body must be written by student 
-    <script type="text/javascript" src="./script.js">
-</script>
-
-</body>
-
-</html> -->
-
-<!DOCTYPE HTML> 
-<HTML> 
-<head> 
-   <title> Shopping List </title> 
-   <style> 
-      #item, #price { 
-         padding: 8px; 
-         text-align: center; 
-      } 
-      #total { 
-         padding: 8px; 
-         font-weight: bold; 
-         text-align: center; 
-      } 
-   </style> 
-   <script> 
-      function addItem() { 
-         
-         // Get the item name and price 
-         var itemName = document.getElementById("item-name-input").value; 
-         var itemPrice = document.getElementById("item-price-input").value; 
-         
-         // Validate the input 
-         if (itemName === "" || itemPrice === "" || itemPrice < 0) { 
-            alert("Please enter valid item information!"); 
-            return; 
-         } 
-         
-         // Get the table elements 
-         var itemTable = document.getElementById("item-table"); 
-         var totalElement = document.getElementById("total"); 
-         
-         // Add new row to the table 
-         var newRow = itemTable.insertRow(-1); 
-         newRow.setAttribute("aria-role", "row"); 
-         
-         // Add item name element 
-         var itemNameCell = newRow.insertCell(0); 
-         itemNameCell.id = "item"; 
-         itemNameCell.innerHTML = itemName; 
-         
-         // Add price element 
-         var itemPriceCell = newRow.insertCell(1); 
-         itemPriceCell.id = "price"; 
-         itemPriceCell.innerHTML = itemPrice; 
-         
-         // Update total 
-         var total = parseFloat(totalElement.innerHTML); 
-         total += parseFloat(itemPrice); 
-         totalElement.innerHTML = total; 
-         
-         // Clear input fields 
-         document.getElementById("item-name-input").value = ""; 
-         document.getElementById("item-price-input").value = ""; 
-      } 
-   </script> 
-</head> 
-<body> 
-   <h3>Shopping List</h3>  
-   <p>Item Name: <input type="text" id="item-name-input" /> </p> 
-   <p>Price: <input type="text" id="item-price-input" /> </p> 
-   <button type="button" id="add" onclick="addItem()">Add</button> 
-
-   <table id="item-table" aria-role="table"> 
-      <tr> 
-         <th id="item">Item</th> 
-         <th id="price">Price</th> 
-      </tr> 
-      <tr> 
-         <td id="total" colspan="2">0.00</td> 
-      </tr> 
-   </table> 
-</body> 
-</HTML>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
