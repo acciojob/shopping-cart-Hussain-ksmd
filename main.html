@@ -8,7 +8,73 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    <h1>Hello, world!</h1>
+<h2>Dynamic Shopping List</h2>
+
+<label for="item-name-input">Item Name:</label>
+<input type="text" id="item-name-input">
+
+<label for="item-price-input">Item Price:</label>
+<input type="number" id="item-price-input">
+
+<button type="button" id="add">Add</button>
+
+<table>
+  <head>
+    <tr>
+      <the>Item</th>
+      <the>Price</th>
+    </tr>
+  </thead>
+  <tbody id="list-body">
+  <tr>
+    <td id="total" role="row" aria-label="Grand Total">0</td>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+let total = 0;
+
+const itemNameInput = document.getElementById('item-name-input');
+const itemPriceInput = document.getElementById('item-price-input');
+const addButton = document.getElementById('add');
+const listBody = document.getElementById('list-body');
+
+addButton.addEventListener('click', function() {
+  const itemName = itemNameInput.value;
+  const itemPrice = itemPriceInput.value;
+  
+  if (itemName === "" || itemPrice <= 0) {
+    alert('Please enter a valid item name and price!');
+    return;
+  }
+  
+  const listRow = document.createElement('tr');
+  listRow.setAttribute('role', 'row');
+  listRow.setAttribute('aria-label', itemName);
+  
+  const listItemName = document.createElement('td');
+  listItemName.setAttribute('id', 'item');
+  listItemName.innerText = itemName;
+  listRow.appendChild(listItemName);
+  
+  const listItemPrice = document.createElement('td');
+  listItemPrice.setAttribute('id', 'price');
+  listItemPrice.innerText = itemPrice;
+  listRow.appendChild(listItemPrice);
+  
+  listBody.appendChild(listRow);
+  
+  total += parseFloat(itemPrice);
+  
+  document.getElementById('total').innerText = total;
+  itemNameInput.value = '';
+  itemPriceInput.value = '';
+});
+</script>
+
+</body>
+</html>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
