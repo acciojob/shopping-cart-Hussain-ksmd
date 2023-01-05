@@ -9,7 +9,7 @@
   </head>
   <body>
 <h2>Dynamic Shopping List</h2>
-
+<!-- 
 <label for="item-name-input" id="item-name-input">Item Name:</label>
 <input type="text" id="item-name-input">
 
@@ -30,48 +30,93 @@
     <td id="total" role="row" aria-label="Grand Total">0</td>
   </tr>
   </tbody>
+</table> -->
+
+<table id="table1">
+  <caption></caption>
+  <tr>
+    <th>Item Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <form id="myinputs">
+      <td>
+        <input type="text" id="item-name-input" placeholder="Name" />
+      </td>
+      <td><input type="text" id="item-qty-input" placeholder="Qty" /></td>
+      <td>
+        <input type="text" id="item-price-input" placeholder="Price" />
+      </td>
+    </form>
+    <td><button id="add" onclick="addData();">Add</button></td>
+  </tr>
 </table>
+<div id="total">Total Ammount is 0 $</div>
 
 <script>
-let total = 0;
+// let total = 0;
 
-const itemNameInput = document.getElementById('item-name-input');
-const itemPriceInput = document.getElementById('item-price-input');
-const addButton = document.getElementById('add');
-const listBody = document.getElementById('list-body');
+// const itemNameInput = document.getElementById('item-name-input');
+// const itemPriceInput = document.getElementById('item-price-input');
+// const addButton = document.getElementById('add');
+// const listBody = document.getElementById('list-body');
 
-addButton.addEventListener('click', function() {
-  const itemName = itemNameInput.value;
-  const itemPrice = itemPriceInput.value;
+// addButton.addEventListener('click', function() {
+//   const itemName = itemNameInput.value;
+//   const itemPrice = itemPriceInput.value;
   
-  if (itemName === "" || itemPrice <= 0) {
-    alert('Please enter a valid item name and price!');
-    return;
-  }
+//   if (itemName === "" || itemPrice <= 0) {
+//     alert('Please enter a valid item name and price!');
+//     return;
+//   }
   
-  const listRow = document.createElement('tr');
-  listRow.setAttribute('role', 'row');
-  listRow.setAttribute('aria-label', itemName);
+//   const listRow = document.createElement('tr');
+//   listRow.setAttribute('role', 'row');
+//   listRow.setAttribute('aria-label', itemName);
   
-  const listItemName = document.createElement('td');
-  listItemName.setAttribute('id', 'item');
-  listItemName.innerText = itemName;
-  listRow.appendChild(listItemName);
+//   const listItemName = document.createElement('td');
+//   listItemName.setAttribute('id', 'item');
+//   listItemName.innerText = itemName;
+//   listRow.appendChild(listItemName);
   
-  const listItemPrice = document.createElement('td');
-  listItemPrice.setAttribute('id', 'price');
-  listItemPrice.innerText = itemPrice;
-  listRow.appendChild(listItemPrice);
+//   const listItemPrice = document.createElement('td');
+//   listItemPrice.setAttribute('id', 'price');
+//   listItemPrice.innerText = itemPrice;
+//   listRow.appendChild(listItemPrice);
   
-  listBody.appendChild(listRow);
+//   listBody.appendChild(listRow);
   
-  total += parseFloat(itemPrice);
+//   total += parseFloat(itemPrice);
   
-  document.getElementById('total').innerText = total;
-  itemNameInput.value = '';
-  itemPriceInput.value = '';
-});
-</script>
+//   document.getElementById('total').innerText = total;
+//   itemNameInput.value = '';
+//   itemPriceInput.value = '';
+// });
+let grandtotal = 0;
+const addData = () => {
+  let name = document.getElementById("item-name-input").value;
+  let qty = document.getElementById("item-qty-input").value;
+  let price = document.getElementById("item-price-input").value;
+  let table = document.getElementById("table1");
+  let newRow = table.insertRow(table.rows.length - 1);
+  let namecell = newRow.insertCell(0);
+  let qtycell = newRow.insertCell(1);
+  let pricecell = newRow.insertCell(2);
+  let totalprice = newRow.insertCell(3);
+  namecell.classList.add("item");
+  totalprice.classList.add("price");
+  namecell.innerHTML = name;
+  qtycell.innerHTML = qty;
+  pricecell.innerHTML = price;
+  totalprice.innerHTML = qty * price;
+  grandtotal += qty * price;
+  document.getElementById("total").innerHTML =
+    "Total Ammount is " + grandtotal + " $";
+  document.getElementById("myinputs").reset();
+};
+ </script>
 
 </body>
 </html>
